@@ -42,8 +42,8 @@ class ViewController: NSViewController {
     
     func updateInfo() {
         let nsRange = textView.selectedRange()
-        let range = Range(nsRange, in: text)!
-        let value = String(text[range])
+        let range = Range(nsRange, in: textView.string)!
+        let value = String(textView.string[range])
         selection.stringValue = value
         characterCount.stringValue = String(value.count)
         nsStringCount.stringValue = String((value as NSString).length)
@@ -58,8 +58,4 @@ extension ViewController: NSTextViewDelegate {
     func textViewDidChangeSelection(_ notification: Notification) {
         updateInfo()
     }
-    func textDidChange(_ notification: Notification) {
-        text = textView.string
-    }
-
 }
